@@ -1,11 +1,17 @@
+import path from 'path';
+
 const config = {
   projectName: 'tree-grow',
   date: '2023-2-1',
-  designWidth: 750,
+  designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
-    828: 1.81 / 2
+    828: 1.81 / 2,
+    375: 2 / 1,
+  },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
