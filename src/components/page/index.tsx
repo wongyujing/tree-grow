@@ -1,27 +1,29 @@
-import {useEffect, useState} from 'react';
+import { memo } from 'react';
 import Taro from '@tarojs/taro';
 import { View } from "@tarojs/components";
 
 import './index.less';
 
+export const SafeTop = memo(() => {
+  const { safeArea } = Taro.getSystemInfoSync();
+  const safeTop = safeArea?.top || 0;
+  return <View style={{ height: safeTop }}></View>
+})
+
+
+export const SafeBottom = memo(() => {
+  const { screenHeight, safeArea } = Taro.getSystemInfoSync();
+  const safeBottom = screenHeight - (safeArea?.bottom || 0);
+  return <View style={{ height: safeBottom }}></View>
+})
+
+
 const Page = ({ children }) => {
-  const [safeHeight, setSafeHeight] = useState<number>(0);
-
-  useEffect(() => {
-    const { screenHeight, safeArea } = Taro.getSystemInfoSync();
-    console.log(132, screenHeight, safeArea);
-    if (safeArea) setSafeHeight(screenHeight - safeArea?.bottom);
-  }, []);
-
   return (
     <View className='page'>
-      <View
-        className='page-c'
-        style={{ height: `calc(100% - ${safeHeight}px)` }}
-      >
+      <View className='page-c'>
         {children}
       </View>
-      <View className='page-b' style={{ height: safeHeight }} />
     </View>
   )
 }

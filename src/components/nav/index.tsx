@@ -4,6 +4,8 @@ import icon2 from './assets/35.png';
 import icon3 from './assets/30.png';
 
 import './index.less';
+import {useState} from "react";
+import classNames from "classnames";
 
 const navList = [
   { key: 'home', title: '首页', icon: icon3 },
@@ -12,10 +14,15 @@ const navList = [
 ]
 
 const Nav = () => {
+  const [current, setCurrent] = useState<string>('home')
   return (
     <View className='nav'>
       {navList.map((nav) => (
-        <View className='nav-item' key={nav.key}>
+        <View
+          className={classNames('nav-item', { 'nav-item-h': current === nav.key })}
+          key={nav.key}
+          onClick={() => setCurrent(nav.key)}
+        >
           <Image src={nav.icon} />
           <Text>{nav.title}</Text>
         </View>
