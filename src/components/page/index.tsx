@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { memo } from 'react';
 import Taro from '@tarojs/taro';
 import { View } from "@tarojs/components";
@@ -11,10 +12,10 @@ export const SafeTop = memo(() => {
 })
 
 
-export const SafeBottom = memo(() => {
+export const SafeBottom = memo(({ style = {} }: { style: CSSProperties }) => {
   const { screenHeight, safeArea } = Taro.getSystemInfoSync();
   const safeBottom = screenHeight - (safeArea?.bottom || 0);
-  return <View style={{ height: safeBottom }}></View>
+  return <View style={{ height: safeBottom, ...style }}></View>
 })
 
 

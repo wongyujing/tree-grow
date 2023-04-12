@@ -1,11 +1,11 @@
-import { View, Image, Text } from "@tarojs/components";
-import icon1 from './assets/41.png';
-import icon2 from './assets/35.png';
-import icon3 from './assets/30.png';
-
-import './index.less';
 import {useState} from "react";
 import classNames from "classnames";
+import { View, Image, Text } from "@tarojs/components";
+import icon1 from '../../assets/41.png';
+import icon2 from '../../assets/35.png';
+import icon3 from '../../assets/30.png';
+
+import './index.less';
 
 const navList = [
   { key: 'home', title: '首页', icon: icon3 },

@@ -1,6 +1,5 @@
 import { View } from '@tarojs/components';
 import Page, { SafeTop, SafeBottom } from '@/components/page';
-import Nav from '@/components/nav';
 import TimeTip from './components/time-tip';
 
 import './index.less';
@@ -8,6 +7,7 @@ import './index.less';
 definePageConfig({
   navigationStyle: 'custom',
   disableScroll: true,
+  usingComponents: {},
 });
 
 export default function Home() {
@@ -28,10 +28,10 @@ export default function Home() {
             </View>
           </View>
         </View>
-        <View className='nav-tab'>
-          <Nav />
-          <SafeBottom />
-        </View>
+        {/*<View className='nav-tab'>*/}
+        {/*  <Nav />*/}
+        {/*  <SafeBottom />*/}
+        {/*</View>*/}
       </View>
     </Page>
   )
