@@ -26,6 +26,16 @@ export default function Home() {
               <View>123123</View>
               <View>123123</View>
             </View>
+
+            <View className='c-panel' onClick={() => {
+              console.log(12312312312)
+            }}>
+              <View>123123</View>
+              <View>123123</View>
+              <View>123123</View>
+              <View>123123</View>
+              <View>123123</View>
+            </View>
           </View>
         </View>
         {/*<View className='nav-tab'>*/}

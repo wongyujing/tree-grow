@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { CoverView, CoverImage, MovableArea, MovableView } from '@tarojs/components';
-import { SafeBottom } from '@/components/page';
+import { View, Image, MovableArea, MovableView } from '@tarojs/components';
+// import { SafeBottom } from '@/components/page';
 import iconHome from '../assets/30.png';
 import iconMission from '../assets/35.png';
 import iconMe from '../assets/41.png';
@@ -11,38 +10,41 @@ const navList = [
   { key: 'home', title: '首页', icon: iconHome },
   { key: 'market', title: '任务', icon: iconMission },
   { key: 'user', title: '我的', icon: iconMe },
-]
+];
+
+const eggH = 350;
+const tabH = 80;
 
 export default function TabBar() {
-  const [y, setY] = useState(0);
   return (
-    <MovableArea className='move-box'>
+    <MovableArea
+      className='move-box'
+      style={{
+        height: eggH * 2 + tabH,
+        position: 'fixed',
+        bottom: -eggH,
+        pointerEvents: 'none',
+      }}
+    >
       <MovableView
         className='move-box-view'
         direction='vertical'
         inertia
-        onChange={(e) => {
-          console.log(111, e);
-        }}
-        // y={y}
-        // onVTouchMove={(e) => {
-        //   console.log(111, e);
-        //   setY(e.detail.y);
-        // }}
+        style={{ height: eggH + tabH, pointerEvents: 'auto' }}
       >
-        <CoverView className='tab-bar-wrap'>
-          <CoverView className='tab-bar'>
+        <View className='tab-bar-wrap'>
+          <View className='tab-bar'>
             {navList.map((tab) => (
-              <CoverView className='tab-bar-item'>
-                <CoverImage className='tab-bar-item-img' src={tab.icon} />
-                <CoverView className='tab-bar-item-txt'>{tab.title}</CoverView>
-              </CoverView>
+              <View className='tab-bar-item'>
+                <Image className='tab-bar-item-img' src={tab.icon} />
+                <View className='tab-bar-item-txt'>{tab.title}</View>
+              </View>
             ))}
-          </CoverView>
-          <CoverView className='egg'>
+          </View>
+          <View className='egg'>
             Egg
-          </CoverView>
-        </CoverView>
+          </View>
+        </View>
       </MovableView>
     </MovableArea>
   )

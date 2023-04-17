@@ -12,7 +12,7 @@ export const SafeTop = memo(() => {
 })
 
 
-export const SafeBottom = memo(({ style = {} }: { style: CSSProperties }) => {
+export const SafeBottom = memo(({ style = {} }: { style?: CSSProperties }) => {
   const { screenHeight, safeArea } = Taro.getSystemInfoSync();
   const safeBottom = screenHeight - (safeArea?.bottom || 0);
   return <View style={{ height: safeBottom, ...style }}></View>
